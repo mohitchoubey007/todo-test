@@ -9,15 +9,15 @@ const app = express();
 const port = process.env.PORT || 5000;
 
 const corsOptions = {
-    origin: 'https://todo-test-backend-nrp62x11w-mohit-choubeys-projects.vercel.app/',
+    origin: 'http://localhost:5173', // Your frontend URL
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
-  };
-  
+};
   app.use(cors(corsOptions));
 app.use(bodyParser.json());
 
 // MongoDB connection
+
 mongoose.connect(process.env.MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true });
 
 const todoSchema = new mongoose.Schema({

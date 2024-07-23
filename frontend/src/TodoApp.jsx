@@ -10,24 +10,24 @@ const TodoApp = () => {
   }, []);
 
   const fetchTodos = async () => {
-    const response = await axios.get('http://localhost:5000/api/todos');
+    const response = await axios.get('https://todo-test-backend-3vkikrwst-mohit-choubeys-projects.vercel.app/api/todos');
     setTodos(response.data);
   };
 
   const addTodo = async () => {
-    const response = await axios.post('http://localhost:5000/api/todos', { text: newTodo });
+    const response = await axios.post('https://todo-test-backend-3vkikrwst-mohit-choubeys-projects.vercel.app/api/todos', { text: newTodo });
     setTodos([...todos, response.data]);
     setNewTodo('');
   };
 
   const toggleComplete = async (id) => {
     const todo = todos.find((todo) => todo._id === id);
-    const response = await axios.put(`http://localhost:5000/api/todos/${id}`, { completed: !todo.completed });
+    const response = await axios.put(`https://todo-test-backend-3vkikrwst-mohit-choubeys-projects.vercel.app/api/todos/${id}`, { completed: !todo.completed });
     setTodos(todos.map((todo) => (todo._id === id ? response.data : todo)));
   };
 
   const deleteTodo = async (id) => {
-    await axios.delete(`http://localhost:5000/api/todos/${id}`);
+    await axios.delete(`https://todo-test-backend-3vkikrwst-mohit-choubeys-projects.vercel.app/api/todos/${id}`);
     setTodos(todos.filter((todo) => todo._id !== id));
   };
 
