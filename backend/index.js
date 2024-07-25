@@ -8,16 +8,9 @@ const cors = require('cors');
 const app = express();
 const port = process.env.PORT || 5000;
 
-const corsOptions = {
-    origin: 'http://localhost:5173', // Your frontend URL
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    allowedHeaders: ['Content-Type', 'Authorization'],
-    credentials: true,
-};
-  app.use(cors(corsOptions));
+
+  app.use(cors());
 app.use(bodyParser.json());
-app.options('*', cors(corsOptions));
-// MongoDB connection
 
 mongoose.connect(process.env.MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true });
 
